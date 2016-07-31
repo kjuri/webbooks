@@ -1,21 +1,49 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.container
+  .row
+    .col-xs-9
+      %h2 Sign up
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .form-group.row
+          = f.label :email, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :email, label: false, autofocus: true, class: 'form-control'
+        .form-group.row
+          = f.label :password, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.password_field :password, label: false, autocomplete: "off", class: 'form-control'
+            - if @minimum_password_length
+              %small.text-muted
+                #{@minimum_password_length} characters minimum
+        .form-group.row
+          = f.label :password_confirmation, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :password_confirmation, label: false, autocomplete: "off", class: 'form-control'
+        .form-group.row
+          = f.label :roles, 'I am a', class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            .btn-group
+              = f.input :roles,
+                        collection: [['reader', 'Reader'], ['writer', 'Writer']],
+                        label_method: :last,
+                        value_method: :first,
+                        as: :radio_buttons,
+                        item_wrapper_class: 'inline',
+                        label: false,
+                        checked: true
+        .form-group.row
+          = f.label :first_name, required: false, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :first_name, label: false, required: false, class: 'form-control'
+        .form-group.row
+          = f.label :last_name, required: false, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :last_name, label: false, required: false, class: 'form-control'
+        .form-group.row
+          = f.label :username, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :username, label: false, class: 'form-control'
+        .form-group.row
+          .offset-xs-3.col-xs-9
+            = f.submit "Sign up", class: 'btn btn-primary'
+      = render "devise/shared/links"
