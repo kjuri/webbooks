@@ -6,6 +6,7 @@ class AddProfileFieldsToUser < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :country
       t.text :bio
+      t.string :username
       t.date :birthday
     end
   end

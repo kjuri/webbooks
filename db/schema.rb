@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160731201541) do
     t.string   "city"
     t.string   "country"
     t.text     "bio",                    limit: 65535
+    t.string   "username"
     t.date     "birthday"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
