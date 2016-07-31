@@ -23,6 +23,7 @@ gem 'reform-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'simple_form'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug', platform: :mri
