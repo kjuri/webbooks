@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password: 
+  host: localhost
+  port: 3306
+
+development:
+  <<: *default
+  database: webbooks_development
+
+test:
+  <<: *default
+  database: webbooks_test
+
+production:
+  <<: *default
+  database: webbooks_production
