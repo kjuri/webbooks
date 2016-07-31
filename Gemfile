@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'reform'
 gem 'reform-rails'
 gem 'devise'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platform: :mri
