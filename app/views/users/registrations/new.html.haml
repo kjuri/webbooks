@@ -32,6 +32,18 @@
                         label: false,
                         checked: true
         .form-group.row
+          = f.label :birthday, required: false, class: 'col-xs-3 col-form-label'
+          .col-xs-9
+            = f.input :birthday,
+                      as: :date,
+                      start_year: Date.today.year - 90,
+                      end_year: Date.today.year - 15,
+                      order: [:day, :month, :year],
+                      label: false,
+                      include_blank: true,
+                      required: false,
+                      class: 'form-control'
+        .form-group.row
           = f.label :first_name, required: false, class: 'col-xs-3 col-form-label'
           .col-xs-9
             = f.input :first_name, label: false, required: false, class: 'form-control'
