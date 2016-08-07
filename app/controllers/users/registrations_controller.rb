@@ -3,9 +3,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    resource_saved = resource.save
     yield resource if block_given?
-    if resource_saved
+    if resource.save
       # Do saved stuff...
     else
       # Re-render to fix
@@ -15,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def build_resource(hash = nil)
-    self.resource = Users::RegistrationForm.new(User.new)
+    self.resource = Users::RegistrationForm.new(resource_class.new)
     resource.validate hash unless hash.nil? || hash.length.zero?
   end
 
