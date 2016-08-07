@@ -1,4 +1,4 @@
-class Users::RegistrationForm < Reform::Form
+class Users::RegistrationForm < BaseForm
   property :first_name
   property :last_name
   property :email

@@ -1,4 +1,4 @@
-class Users::SessionForm < Reform::Form
+class Users::SessionForm < BaseForm
   property :email
   property :password
   property :remember_me
