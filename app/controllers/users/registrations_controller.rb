@@ -6,11 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     yield resource if block_given?
-    if resource.save
-      # Do saved stuff...
-    else
-      # Re-render to fix
-    end
+    render 'new' unless resource.save
   end
 
   protected
