@@ -1,4 +1,6 @@
 class Users::RegistrationForm < BaseForm
+  before_validation :roles_to_array
+
   property :first_name
   property :last_name
   property :email
@@ -23,5 +25,11 @@ class Users::RegistrationForm < BaseForm
     return false unless valid?
     sync
     model.save
+  end
+
+  private
+
+  def roles_to_array
+    self.roles = [roles]
   end
 end
