@@ -10,16 +10,14 @@ class Users::RegistrationForm < Reform::Form
 
   validates :username, presence: true
   validates :email, presence: true
-  validates :password, presence: true, confirmation: true,
-                       length: { minimum: 8 }
+  validates :password, presence: true, confirmation: true, length: { minimum: 8 }
   validates :roles, exclusion: { in: %w(admin) }
 
   def active_for_authentication?
     true
   end
 
-  def authenticatable_salt
-  end
+  def authenticatable_salt; end
 
   def save
     return false unless valid?
