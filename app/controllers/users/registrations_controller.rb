@@ -3,6 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    binding.pry
     build_resource(sign_up_params)
 
     yield resource if block_given?
@@ -17,9 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:first_name, :last_name, :email, :password, :password_confirmation,
-               :birthday, :username, roles: [])
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:first_name, :last_name, :email, :password,
+                         :password_confirmation, :birthday, :username, roles: [])
     end
   end
 
