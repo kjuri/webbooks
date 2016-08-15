@@ -6,6 +6,12 @@ class User < ApplicationRecord
 
   ROLES = %i(admin writer reader).freeze
 
+  ROLES.each do |role|
+    define_method "#{role}?".to_sym do
+      role?(role)
+    end
+  end
+
   def roles=(roles)
     roles = [*roles].map(&:to_sym)
     self.roles_mask = (roles & ROLES).map do |r|
