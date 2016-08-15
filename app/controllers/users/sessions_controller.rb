@@ -13,4 +13,10 @@ class Users::SessionsController < Devise::SessionsController
   def build_resource(hash = nil)
     self.resource = Users::SessionForm.new(resource_class.new)
   end
+
+  def after_sign_in_path_for(resource)
+    return admin_home_path if resource.admin?
+    return reader_home_path if resource.reader?
+    writer_home_path
+  end
 end
