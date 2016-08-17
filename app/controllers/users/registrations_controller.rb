@@ -3,7 +3,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    binding.pry
     build_resource(sign_up_params)
 
     yield resource if block_given?
@@ -24,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_sign_up_path_for(_resource)
-    root_path
+  def after_sign_up_path_for(resource)
+    resource.sign_in_path
   end
 end

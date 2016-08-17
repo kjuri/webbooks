@@ -28,4 +28,10 @@ class User < ApplicationRecord
   def role?(role)
     roles.include?(role)
   end
+
+  def sign_in_path
+    return admin_panel_path if resource.admin?
+    return writers_panel_path if resource.writer?
+    readers_panel_path
+  end
 end

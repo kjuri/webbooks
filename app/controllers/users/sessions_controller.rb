@@ -15,8 +15,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    return admin_home_path if resource.admin?
-    return reader_home_path if resource.reader?
-    writer_home_path
+    resource.sign_in_path
   end
 end
