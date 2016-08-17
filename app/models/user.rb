@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   def sign_in_path
     return admin_panel_path if resource.admin?
-    return writers_panel_path if resource.writer?
-    readers_panel_path
+    return writer_panel_path if resource.writer?
+    reader_panel_path
   end
 end
