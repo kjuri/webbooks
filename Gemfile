@@ -25,6 +25,7 @@ gem 'cancancan'
 gem 'simple_form'
 gem 'paperclip'
 gem 'drape'
+gem 'tinymce-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
