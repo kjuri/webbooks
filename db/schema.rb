@@ -10,25 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821163136) do
+ActiveRecord::Schema.define(version: 20160821170030) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
-    t.string "short_description"
-    t.text   "description",       limit: 65535
+    t.string   "title"
+    t.string   "short_description"
+    t.text     "description",       limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "chapters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
+    t.string   "title"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_chapters_on_book_id", using: :btree
   end
 
   create_table "decision_points", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "question"
-    t.text   "answers",  limit: 65535
+    t.string   "question"
+    t.text     "answers",    limit: 65535
+    t.integer  "part_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["part_id"], name: "index_decision_points_on_part_id", using: :btree
   end
 
   create_table "parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text "content", limit: 65535
+    t.text     "content",    limit: 65535
+    t.integer  "chapter_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["chapter_id"], name: "index_parts_on_chapter_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
