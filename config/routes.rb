@@ -8,5 +8,13 @@ Rails.application.routes.draw do
     get 'index', as: 'panel'
   end
 
+  resources :books do
+    resources :chapters do
+      resources :parts do
+        resources :decision_point
+      end
+    end
+  end
+
   root to: 'home#index'
 end
