@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :chapters do
       resources :parts do
-        resources :decision_point
+        resources :decision_points
       end
     end
   end
