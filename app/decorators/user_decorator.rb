@@ -1,4 +1,4 @@
-class UserDecorator < Draper::Decorator
+class UserDecorator < Drape::Decorator
   delegate :primary_role
 
   def primary_role_name

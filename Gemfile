@@ -24,8 +24,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'simple_form'
 gem 'paperclip'
-gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-gem 'draper'
+gem 'drape'
 
 group :development, :test do
   gem 'byebug', platform: :mri
