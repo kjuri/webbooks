@@ -5,15 +5,15 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'index', as: 'admin_panel'
+    get 'index', as: 'panel'
   end
 
   namespace :writer do
-    get 'index', as: 'writer_panel'
+    get 'index', as: 'panel'
   end
 
   namespace :reader do
-    get 'index', as: 'reader_panel'
+    get 'index', as: 'panel'
   end
 
   root to: 'home#index'

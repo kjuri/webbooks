@@ -30,8 +30,8 @@ class User < ApplicationRecord
   end
 
   def sign_in_path
-    return admin_panel_path if resource.admin?
-    return writer_panel_path if resource.writer?
-    reader_panel_path
+    return Rails.application.routes.url_helpers.admin_panel_path if admin?
+    return Rails.application.routes.url_helpers.writer_panel_path if writer?
+    Rails.application.routes.url_helpers.reader_panel_path
   end
 end
