@@ -29,6 +29,12 @@ class User < ApplicationRecord
     roles.include?(role)
   end
 
+  def primary_role
+    return :admin if admin?
+    return :writer if writer?
+    :reader
+  end
+
   def sign_in_path
     return Rails.application.routes.url_helpers.admin_panel_path if admin?
     return Rails.application.routes.url_helpers.writer_panel_path if writer?

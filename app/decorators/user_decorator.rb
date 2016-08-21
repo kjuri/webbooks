@@ -1,11 +1,5 @@
 class UserDecorator < Draper::Decorator
-  delegate :admin?, :writer?
-  
-  def primary_role
-    return :admin if admin?
-    return :writer if writer?
-    :reader
-  end
+  delegate :primary_role
 
   def primary_role_name
     primary_role.to_s.titleize
