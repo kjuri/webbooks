@@ -8,13 +8,5 @@ Rails.application.routes.draw do
     get 'index', as: 'panel'
   end
 
-  namespace :writer do
-    get 'index', as: 'panel'
-  end
-
-  namespace :reader do
-    get 'index', as: 'panel'
-  end
-
   root to: 'home#index'
 end
