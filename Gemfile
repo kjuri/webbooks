@@ -24,6 +24,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'simple_form'
 gem 'paperclip'
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'draper'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -35,6 +37,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
+  # gem 'pry-debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
 end

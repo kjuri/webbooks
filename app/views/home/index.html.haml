@@ -1,7 +1,9 @@
 %div.container
   %div.row
     %div.col-sm-12
-      %h1 Webbooks
+      %h1 WebBooks
+      - if user_signed_in?
+        %h2 #{current_user.primary_role_name}'s panel
   %div.row
     %div.col-sm-12
       - if user_signed_in?
