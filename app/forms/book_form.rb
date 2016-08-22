@@ -1,3 +1,7 @@
 class BookForm < BaseForm
-  properties :description
+  property :title
+  property :short_description
+  property :description
+
+  collection :chapters, form: ChapterForm
 end
