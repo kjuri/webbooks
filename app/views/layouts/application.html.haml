@@ -11,10 +11,12 @@
       - if flash.any?
         %div.row.alerts
           %div.col-sm-12
-            - if flash.notice
-              %div.alerts__notice.alert.alert-success
+            %div.alert.alert-dismissable.fade.in{ class: "alert-#{flash_type(flash)}", role: 'alert' }
+              %button.close{ data: { dismiss: 'alert' }, aria: { label: 'Close' } }
+                %span{ aria: { hidden: true } }
+                  &times;
+              - if flash.notice
                 = notice
-            - if flash.alert
-              %div.alerts__alert.alert.alert-danger
+              - if flash.alert
                 = alert
       = yield
