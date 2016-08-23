@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821170030) do
+ActiveRecord::Schema.define(version: 20160823194120) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 20160821170030) do
     t.text     "description",       limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "books_genres", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "genre_id", null: false
+    t.integer "book_id",  null: false
+    t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id", using: :btree
+    t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id", using: :btree
   end
 
   create_table "chapters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,6 +42,11 @@ ActiveRecord::Schema.define(version: 20160821170030) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["part_id"], name: "index_decision_points_on_part_id", using: :btree
+  end
+
+  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "description"
   end
 
   create_table "parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
