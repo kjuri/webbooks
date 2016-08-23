@@ -26,6 +26,8 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'drape'
 gem 'tinymce-rails'
+gem 'administrate', github: 'greetpoint/administrate', branch: 'rails5'
+gem 'bourbon', '~> 5.0.0.beta.5' 
 
 group :development, :test do
   gem 'byebug', platform: :mri
