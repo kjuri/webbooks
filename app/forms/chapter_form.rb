@@ -5,4 +5,5 @@ class ChapterForm < BaseForm
   collection :parts, form: PartForm
 
   validates :book, presence: true
+  validates :title, presence: true
 end
