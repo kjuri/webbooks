@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20160823194120) do
     t.text     "description",       limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
   create_table "books_genres", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,4 +93,5 @@ ActiveRecord::Schema.define(version: 20160823194120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "books", "users"
 end

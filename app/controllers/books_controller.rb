@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   helper_method :book
 
   def create_new_form
-    BookForm.new(Book.new)
+    BookForm.new(Book.new(user: current_user))
   end
 
   def create_edit_form

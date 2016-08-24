@@ -2,6 +2,7 @@ class BookForm < BaseForm
   property :title
   property :short_description
   property :description
+  property :user
 
   collection :chapters, form: ChapterForm
   collection :genres do
@@ -11,4 +12,5 @@ class BookForm < BaseForm
   validates :title, presence: true
   validates :short_description, presence: true, length: { maximum: 255 }
   validates :description, presence: true
+  validates :user, presence: true
 end

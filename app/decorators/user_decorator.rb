@@ -1,6 +1,6 @@
 class UserDecorator < Drape::Decorator
-  delegate :first_name, :last_name, :primary_role
-
+  delegate_all
+  
   def primary_role_name
     primary_role.to_s.titleize
   end
