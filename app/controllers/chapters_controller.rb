@@ -17,7 +17,7 @@ class ChaptersController < ApplicationController
       @chapter.save do |data|
         @chapter = Chapter.create(data)
         flash[:notice] = 'Chapter successfully created'
-        redirect_to chapter_path(@chapter.id)
+        redirect_to book_chapter_path(@book, @chapter)
       end
     else
       render :new
@@ -34,7 +34,7 @@ class ChaptersController < ApplicationController
       @chapter = @chapter.sync
       @chapter.save
       flash[:notice] = 'Book successfully updated'
-      redirect_to chapter_path(@chapter.id)
+      redirect_to book_chapter_path(@book, @chapter)
     else
       render :edit
     end
@@ -43,13 +43,14 @@ class ChaptersController < ApplicationController
   def destroy
     if chapter.destroy
       flash[:notice] = 'Chapter successfully deleted'
-      redirect_to chapters_path(book_id: params[:book_id])
+      redirect_to book_chapters(book)
     end
   end
 
   private
 
   def chapter
+    book
     @chapter ||= Chapter.find(params[:id])
   end
 
