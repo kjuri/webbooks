@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def show
     book
+    @chapters = book.chapters.decorate
   end
 
   def new

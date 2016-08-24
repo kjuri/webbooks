@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
   def index
-    @chapters = Chapter.where(book_id: params[:book_id])
+    @chapters = Chapter.where(book: book).decorate
   end
 
   def show
