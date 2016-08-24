@@ -8,11 +8,11 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = create_new_form
+    @book = new_book_form
   end
 
   def create
-    @book = create_new_form
+    @book = new_book_form
     if @book.validate(params[:book])
       @book.save do |data|
         @book = Book.create(data)
@@ -20,23 +20,23 @@ class BooksController < ApplicationController
         redirect_to book_path(@book.id)
       end
     else
-      render 'new'
+      render :new
     end
   end
 
   def edit
-    @book = create_edit_form
+    @book = edit_book_form
   end
 
   def update
-    @book = create_edit_form
+    @book = edit_book_form
     if @book.validate(params[:book])
-      @book.save do |data|
-        flash[:notice] = 'Book successfully updated'
-        redirect_to book_path(@book.id)
-      end
+      @book = @book.sync
+      @book.save
+      flash[:notice] = 'Book successfully updated'
+      redirect_to book_path(@book.id)
     else
-      render 'edit', book_id: book.id
+      render :edit
     end
   end
 
@@ -55,11 +55,11 @@ class BooksController < ApplicationController
 
   helper_method :book
 
-  def create_new_form
+  def new_book_form
     BookForm.new(Book.new(user: current_user))
   end
 
-  def create_edit_form
+  def edit_book_form
     BookForm.new(book)
   end
 end
