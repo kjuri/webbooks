@@ -1,0 +1,15 @@
+.table__cell-centered {
+  text-align: center;
+}
+
+.table__actions {
+  font-size: 18px;
+
+  .actions__button {
+    color: $graphite;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

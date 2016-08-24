@@ -28,15 +28,16 @@
               %th{ scope: 'row' }
                 = book.id
               %td
-                = book.title
+                = link_to book.title, book
               %td
                 = book.subtitle
-              %td
+              %td.table__cell-centered
                 = book.chapters.size
               %td
                 = book.short_description
               %td
                 = book.created_at
-              %td
-                = link_to fa_icon('pencil-square-o'), edit_book_path(book.id)
-                = link_to fa_icon('times'), book_path(book.id), method: :delete
+              %td.table__cell-centered.table__actions
+                = link_to fa_icon('search'), book, class: 'actions__button'
+                = link_to fa_icon('edit'), edit_book_path(book), class: 'actions__button'
+                = link_to fa_icon('times'), book_path(book), method: :delete, class: 'actions__button actions__button-aligned'
