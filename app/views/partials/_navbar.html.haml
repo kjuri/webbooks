@@ -3,6 +3,8 @@
   %ul.nav.navbar-nav.pull-xs-right
     - if user_signed_in?
       %li.nav-item
+        = link_to current_user.profile_link_text, root_path, class: 'nav-link'
+      %li.nav-item
         = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-warning'
     - else
       %li.nav-item

@@ -26,6 +26,7 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'drape'
 gem 'tinymce-rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
