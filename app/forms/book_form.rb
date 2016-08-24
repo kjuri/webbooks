@@ -1,5 +1,6 @@
 class BookForm < BaseForm
   property :title
+  property :subtitle
   property :short_description
   property :description
   property :user

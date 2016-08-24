@@ -1,0 +1,42 @@
+.container
+  .row
+    .col-sm-9
+      %h2 Your books
+    .col.sm-3.pull-right
+      = link_to 'Create new book', new_book_path, class: 'btn btn-outline-primary'
+  .row
+    .col-sm-12
+      %table.table.table-hover
+        %thead.thead-inverse
+          %tr
+            %th #
+            %th
+              = Book.human_attribute_name :title
+            %th
+              = Book.human_attribute_name :subtitle
+            %th
+              = Book.human_attribute_name :chapters
+            %th
+              = Book.human_attribute_name :short_description
+            %th
+              = Book.human_attribute_name :created_at
+            %th
+              = Book.human_attribute_name :actions
+        %tbody
+          - @books.each do |book|
+            %tr
+              %th{ scope: 'row' }
+                = book.id
+              %td
+                = book.title
+              %td
+                = book.subtitle
+              %td
+                = book.chapters.size
+              %td
+                = book.short_description
+              %td
+                = book.created_at
+              %td
+                = link_to fa_icon('pencil-square-o'), edit_book_path(book.id)
+                = link_to fa_icon('times'), book_path(book.id), method: :delete
