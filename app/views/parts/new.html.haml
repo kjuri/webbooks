@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-sm-12
+      %h2 Create new part
+      = simple_form_for [@book, @chapter, @part] do |f|
+        .row
+          .col-sm-12
+            .form-group
+              = f.input :content, as: :text, input_html: { class: 'tinymce', rows: 20 }
+              = tinymce
+        = simple_fields_for :decision_point do |dpf|
+          .row
+            .col-sm-12
+              .form-group
+                = dpf.input :question
+        .row
+          .col-sm-12
+            = f.submit 'Create part', class: 'btn btn-success'
