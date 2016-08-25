@@ -16,13 +16,8 @@
             .col-sm-12
               .form-group
                 = dpf.input :question
-            = simple_fields_for :answers do |dpaf|
-              .col-sm-7
-                .form-group
-                  = dpaf.input :answer, label: false, input_html: { placeholder: 'Answer' }
-              .col-sm-4
-                .form-group
-                  = dpaf.input :part_id, label: false, input_html: { placeholder: 'Part' }
+          = simple_fields_for :answers do |dpaf|
+            = render 'answer_field', f: dpaf
         .row
           .col-sm-12
             = f.submit 'Create part', class: 'btn btn-success'

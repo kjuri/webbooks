@@ -1,0 +1,11 @@
+.row
+  .col-sm-1.answer__number
+    #{@answers_count}.
+  .col-sm-7
+    .form-group
+      = f.input :answer, label: false, input_html: { placeholder: 'Answer' }
+  .col-sm-3
+    .form-group
+      = f.input :part_id, label: false, input_html: { placeholder: 'Part' }
+  .col-sm-1.answer__button
+    = fa_icon 'plus'

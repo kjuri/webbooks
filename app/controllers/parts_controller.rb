@@ -9,6 +9,7 @@ class PartsController < ApplicationController
 
   def new
     @part = new_part_form
+    @answers_count ||= 1
   end
 
   def create
