@@ -64,7 +64,8 @@ class PartsController < ApplicationController
   end
 
   def new_part_form
-    PartForm.new(Part.new(chapter: chapter))
+    part = Part.new(chapter: chapter)
+    PartForm.new(part, decision_point: part.build_decision_point)
   end
 
   def edit_part_form
