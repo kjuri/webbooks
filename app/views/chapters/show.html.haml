@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-sm-12
+      %h2.display-3.book__title
+        = @book.title
+        %small.text-muted.book__subtitle
+          = @book.subtitle
+  .row
+    .col-sm-12.book__details
+      %dl.row
+        %dt.col-sm-3
+          = Chapter.human_attribute_name :title
+        %dd.col-sm-9
+          = @chapter.title
+        %dt.col-sm-3
+          = Chapter.human_attribute_name :created_at
+        %dd.col-sm-9
+          = @chapter.created_at
+  .row
+    .col-sm-12.book__chapters
+      %h3.book__chapters__header Parts (#{@chapter.parts.size})
+      - if @chapter.parts.size.zero?
+        There are no parts yet, too add one click
+        = link_to 'here', new_book_chapter_part_path(@book, @chapter)
+      - else
+        = render template: 'chapters/index'

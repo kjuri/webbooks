@@ -33,7 +33,7 @@ class ChaptersController < ApplicationController
     if @chapter.validate(params[:chapter])
       @chapter = @chapter.sync
       @chapter.save
-      flash[:notice] = 'Book successfully updated'
+      flash[:notice] = 'Chapter successfully updated'
       redirect_to book_chapter_path(@book, @chapter)
     else
       render :edit
@@ -51,11 +51,11 @@ class ChaptersController < ApplicationController
 
   def chapter
     book
-    @chapter ||= Chapter.find(params[:id])
+    @chapter ||= Chapter.find(params[:id]).decorate
   end
 
   def book
-    @book ||= Book.find(params[:book_id])
+    @book ||= Book.find(params[:book_id]).decorate
   end
 
   def new_chapter_form
