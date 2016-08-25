@@ -16,8 +16,14 @@
             .col-sm-12
               .form-group
                 = dpf.input :question
-          = simple_fields_for :answers do |dpaf|
-            = render 'answer_field', f: dpaf
+          #answer__fields
+            = simple_fields_for :answer do |af|
+              :coffee
+                window.addField = ->
+                  $('#answer__fields').append("#{j render('answer_field', f: af)}")
+                window.removeField = (elem) ->
+                  $(elem).closest('.answer__field').remove()
+              = render 'answer_field', f: af
         .row
           .col-sm-12
             = f.submit 'Create part', class: 'btn btn-success'
