@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824190501) do
+ActiveRecord::Schema.define(version: 20160825195132) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160824190501) do
     t.integer  "chapter_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "title"
     t.index ["chapter_id"], name: "index_parts_on_chapter_id", using: :btree
   end
 

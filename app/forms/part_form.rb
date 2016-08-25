@@ -1,4 +1,5 @@
 class PartForm < BaseForm
+  property :title
   property :content
 
   property :decision_point do
@@ -8,4 +9,6 @@ class PartForm < BaseForm
       property :part_id
     end
   end
+
+  validates :title, presence: true
 end
