@@ -1,5 +1,6 @@
 class DecisionPoint < ApplicationRecord
   belongs_to :part
+  has_many :answers
 
-  serialize :answers, Hash
+  accepts_nested_attributes_for :answers
 end

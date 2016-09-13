@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825195132) do
+ActiveRecord::Schema.define(version: 20160826201204) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "answer"
+    t.integer "decision_point_id"
+    t.integer "part_id"
+    t.index ["decision_point_id"], name: "index_answers_on_decision_point_id", using: :btree
+  end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -95,5 +102,6 @@ ActiveRecord::Schema.define(version: 20160825195132) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "decision_points"
   add_foreign_key "books", "users"
 end
