@@ -11,19 +11,6 @@
             .form-group
               = f.input :content, as: :text, input_html: { class: 'tinymce', rows: 20 }
               = tinymce
-        = f.simple_fields_for :decision_point do |ff|
-          .row
-            .col-sm-12
-              .form-group
-                = ff.input :question
-          #answer__fields
-            = ff.simple_fields_for :answers do |fff|
-              :coffee
-                window.addField = ->
-                  $('#answer__fields').append("#{j render('answer_field', f: fff)}")
-                window.removeField = (elem) ->
-                  $(elem).closest('.answer__field').remove()
-              = render 'answer_field', f: fff
         .row
           .col-sm-12
             = f.submit 'Create part', class: 'btn btn-success'

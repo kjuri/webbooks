@@ -1,0 +1,14 @@
+= simple_form_for [@book, @chapter, @part, @decision_point] do |f|
+  .row
+    .col-sm-12
+      .form-group
+        = f.input :question
+  #answers
+    = f.simple_fields_for :answers do |answer|
+      = render 'answer_fields', counter: @counter, f: answer
+    .links
+      = link_to_add_association fa_icon('plus'), f, :answers, class: 'btn btn-info answer__button-add'
+  .row
+    .col-sm-12
+      .form-group
+        = f.submit 'Create Decision Point', class: 'btn btn-success'

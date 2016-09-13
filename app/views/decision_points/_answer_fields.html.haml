@@ -1,0 +1,9 @@
+.nested_fields.row.answer__field
+  .col-sm-7
+    .form-group
+      = f.input :answer, label: false, input_html: { placeholder: 'Answer' }
+  .col-sm-4
+    .form-group
+      = f.input :part_id, label: false, input_html: { placeholder: 'Part' }
+  .col-sm-1.answer__buttons.links
+    = link_to_remove_association fa_icon('remove'), f
