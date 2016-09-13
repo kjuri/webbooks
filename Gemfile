@@ -27,9 +27,11 @@ gem 'paperclip'
 gem 'drape'
 gem 'tinymce-rails'
 gem 'font-awesome-rails'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
 end
 
 group :development do
