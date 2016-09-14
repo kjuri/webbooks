@@ -5,7 +5,7 @@
         = f.input :question
   #answers
     = f.simple_fields_for :answers do |answer|
-      = render 'answer_fields', counter: @counter, f: answer
+      = render 'answer_fields', f: answer
     .links
       = link_to_add_association fa_icon('plus'), f, :answers, class: 'btn btn-info answer__button-add'
   .row
