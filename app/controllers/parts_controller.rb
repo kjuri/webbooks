@@ -17,7 +17,7 @@ class PartsController < ApplicationController
       @part.save do |data|
         @part = Part.create(data)
         flash[:notice] = 'Part successfully created'
-        redirect_to book_chapter_part_path(@book, @chapter, @part)
+        redirect_to new_book_chapter_part_decision_point_path(@book, @chapter, @part)
       end
     else
       render :new
