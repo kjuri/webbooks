@@ -5,6 +5,7 @@ class DecisionPointsController < ApplicationController
 
   def create
     @decision_point = DecisionPoint.new(decision_point_params)
+    @decision_point.part = part
     if @decision_point.save
       flash[:notice] = 'Decision Point successfully created'
       redirect_to book_chapter_part_path(book, chapter, part)
@@ -36,8 +37,14 @@ class DecisionPointsController < ApplicationController
   private
 
   def decision_point
-    part and chapter and book
-    @decision_point ||= params[:id] ? DecisionPoint.find(params[:id]) : DecisionPoint.new
+    part and chapter
+    @decision_point ||=
+      if params[:id]
+        DecisionPoint.find(params[:id])
+      else
+        DecisionPoint.new(part_id: params[:part_id])
+      end
+    @parts = book.parts
   end
 
   def part
