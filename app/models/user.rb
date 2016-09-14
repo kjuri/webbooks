@@ -2,7 +2,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :confirmable
 
+  has_one :library
+  has_many :shelves, through: :library
   has_many :books
+  has_many :progresses
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }
 
