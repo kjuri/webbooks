@@ -8,7 +8,7 @@ class DecisionPointsController < ApplicationController
     @decision_point.part = part
     if @decision_point.save
       flash[:notice] = 'Decision Point successfully created'
-      redirect_to book_chapter_part_path(book, chapter, part)
+      redirect_to book_chapter_path(book, chapter)
     else
       render :new
     end
@@ -21,7 +21,7 @@ class DecisionPointsController < ApplicationController
   def update
     if decision_point.update_attributes(decision_point_params)
       flash[:notice] = 'Decision Point successfully updated'
-      redirect_to book_chapter_part_path(book, chapter, part)
+      redirect_to book_chapter_path(book, chapter)
     else
       render :edit
     end
