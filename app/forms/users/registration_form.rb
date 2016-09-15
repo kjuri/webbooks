@@ -22,6 +22,13 @@ class Users::RegistrationForm < BaseForm
   def save
     return false unless valid?
     sync
+    Library.create(user: model)
+    Shelf.create(
+      name: model.username,
+      description: "#{model.username}'s first shelf'",
+      private: false,
+      library: model.library
+    )
     model.save
   end
 end
