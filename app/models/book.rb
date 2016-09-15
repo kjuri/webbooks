@@ -8,4 +8,6 @@ class Book < ApplicationRecord
 
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :shelves
+
+  scope :best, -> (n = 10) { Book.last(n) }
 end

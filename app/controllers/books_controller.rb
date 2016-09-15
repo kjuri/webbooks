@@ -12,6 +12,13 @@ class BooksController < ApplicationController
     @book = new_book_form
   end
 
+  def browse
+    @books = {
+      latest: Book.order(created_at: :desc).limit(12),
+      best: Book.best(12)
+    }
+  end
+
   def create
     @book = new_book_form
     if @book.validate(params[:book])
