@@ -6,28 +6,10 @@
     %h3 Top books
   .row
   - @books[:best].each do |book|
-    .col-sm-3.section
-      .card
-        = image_tag 'placeholder.png', class: 'card-img-top card-image'
-        .card-block.text-xs-center
-          %h3.card-title.book__title
-            = book.title
-          %h4.cart-subtitle.text-muted.book__subtitle
-            = book.subtitle
-          %p.card-text
-            = book.short_description
+    = render partial: 'book_card', locals: { book: book }
 .row
   .col.sm-12
     %h3 Latest books
   .row
   - @books[:latest].each do |book|
-    .col-sm-3.section
-      .card
-        = image_tag 'placeholder.png', class: 'card-img-top card-image'
-        .card-block.text-xs-center
-          %h3.card-title.book__title
-            = book.title
-          %h4.cart-subtitle.text-muted.book__subtitle
-            = book.subtitle
-          %p.card-text
-            = book.short_description
+    = render partial: 'book_card', locals: { book: book }
