@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914195755) do
+ActiveRecord::Schema.define(version: 20160915193126) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "answer"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20160914195755) do
     t.integer "book_id",  null: false
     t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id", using: :btree
     t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id", using: :btree
+  end
+
+  create_table "books_shelves", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "book_id",  null: false
+    t.integer "shelf_id", null: false
+    t.index ["book_id", "shelf_id"], name: "index_books_shelves_on_book_id_and_shelf_id", using: :btree
+    t.index ["shelf_id", "book_id"], name: "index_books_shelves_on_shelf_id_and_book_id", using: :btree
   end
 
   create_table "chapters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
