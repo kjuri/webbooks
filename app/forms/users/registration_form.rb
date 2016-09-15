@@ -25,7 +25,7 @@ class Users::RegistrationForm < BaseForm
     Library.create(user: model)
     Shelf.create(
       name: model.username,
-      description: "#{model.username}'s first shelf'",
+      description: "#{model.username}'s first shelf",
       private: false,
       library: model.library
     )
