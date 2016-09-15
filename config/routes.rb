@@ -14,7 +14,10 @@ Rails.application.routes.draw do
         resources :decision_points
       end
     end
+    resources :reviews, except: [:show]
   end
+
+  resources :shelves, except: [:index]
 
   root to: 'home#index'
 end
