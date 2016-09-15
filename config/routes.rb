@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       end
     end
     resources :reviews, except: [:show]
+    get 'read', on: :member
+    get 'browse', on: :collection
   end
 
   resources :shelves, except: [:index]
