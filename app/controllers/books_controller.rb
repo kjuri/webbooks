@@ -14,8 +14,8 @@ class BooksController < ApplicationController
 
   def browse
     @books = {
-      latest: Book.order(created_at: :desc).limit(12),
-      best: Book.best(12)
+      best: Book.best(12).decorate,
+      latest: Book.order(created_at: :desc).limit(12).decorate
     }
   end
 

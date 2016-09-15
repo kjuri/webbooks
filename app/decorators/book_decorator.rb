@@ -7,4 +7,8 @@ class BookDecorator < Drape::Decorator
     end
   end
 
+  def cover
+    cover_file_name || 'placeholder.png'
+  end
+
 end
