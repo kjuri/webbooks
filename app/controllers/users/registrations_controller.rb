@@ -7,6 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     yield resource if block_given?
     render 'new' unless resource.save
+    if Rails.env.development?
+      render text: confirmation_url(resource.model,
+                                    confirmation_token: resource.model.confirmation_token)
+    end
   end
 
   protected
