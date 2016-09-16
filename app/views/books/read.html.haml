@@ -1,0 +1,9 @@
+.row
+  .col-sm-12
+    %h2.chapter__title
+      = @part.chapter.title
+      %small.part__title
+        = @part.title
+.row
+  .col-sm-12.part__content
+    = @part.content.html_safe

@@ -1,5 +1,11 @@
 %nav.navbar.navbar-full.navbar-dark.bg-inverse
   = link_to 'WebBooks', root_path, class: 'navbar-brand'
+  - if @book
+    %ul.nav.navbar-nav.book__details
+      %li.nav-item.book__details-title
+        = @book.title
+      %li.nav-item.book__details-subtitle
+        = @book.subtitle
   %ul.nav.navbar-nav.pull-xs-right
     - if user_signed_in?
       %li.nav-item

@@ -1,3 +1,53 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i|Raleway:200,200i,400,700,700i&subset=latin-ext';
+
+body {
+  &.webbook {
+    background-color: rgb(205, 205, 205);
+  }
+
+  .read__container {
+    min-height: 100vh;
+  }
+
+  .book__details li {
+    color: white;
+    line-height: 40px;
+    margin-left: 25rem;
+    text-align: center;
+    &.book__details-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    &.book__details-subtitle {
+      font-size: 14px;
+      font-weight: 100;
+    }
+  }
+
+  .chapter__title, .part__title {
+    color: rgb(50, 50, 50);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .chapter__title {
+    font-size: 60pt;
+    font-weight: 700;
+  }
+
+  .part__title {
+    font-size: 30pt;
+    font-weight: 400;
+  }
+
+  .part__content {
+    color: rgb(50, 50, 50);
+    font-family: 'Raleway', sans-serif;
+    font-size: 18pt;
+    font-weight: 200;
+  }
+}

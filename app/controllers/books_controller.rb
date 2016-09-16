@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  layout :choose_layout
+
   def index
     @books = Book.where(user: current_user).decorate
   end
@@ -17,6 +19,14 @@ class BooksController < ApplicationController
       best: Book.best(12).decorate,
       latest: Book.order(created_at: :desc).limit(12).decorate
     }
+  end
+
+  def read
+    @part ||= if progress.any?
+      progress.first.part
+    else
+      book.chapters.first.parts.first
+    end
   end
 
   def create
@@ -57,8 +67,17 @@ class BooksController < ApplicationController
 
   private
 
+  def choose_layout
+    return 'webbook' if action_name == 'read'
+    'application'
+  end
+
   def book
     @book ||= Book.find(params[:id])
+  end
+
+  def progress
+    @progress ||= book.progresses.where(user: current_user)
   end
 
   helper_method :book
