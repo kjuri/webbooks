@@ -1,7 +1,7 @@
 %nav.navbar.navbar-full.navbar-dark.bg-inverse
   = link_to 'WebBooks', root_path, class: 'navbar-brand'
   - if @book
-    %ul.nav.navbar-nav.book__details
+    %ul.nav.navbar-nav.book__details.hidden-sm-down
       %li.nav-item.book__details-title
         = @book.title
       %li.nav-item.book__details-subtitle
