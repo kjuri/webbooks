@@ -24,8 +24,11 @@ class BooksController < ApplicationController
   def read
     @part ||= if progress.any?
       progress.first.part
-    else
+    elsif book.chapters.first.parts.any?
       book.chapters.first.parts.first
+    else
+      flash[:alert] = 'This book has no content defined'
+      redirect_to browse_books_path
     end
   end
 
