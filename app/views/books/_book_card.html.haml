@@ -8,4 +8,4 @@
         = book.subtitle
       %p.card-text
         = book.short_description
-      = link_to fa_icon('plus-square', text: 'Add to Library'), add_to_library_book_path(book)
+      = book.library_link(current_user)

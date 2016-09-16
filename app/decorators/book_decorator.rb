@@ -1,4 +1,8 @@
 class BookDecorator < Drape::Decorator
+  include FontAwesome::Rails::IconHelper
+  include ActionView::Helpers
+  include Rails.application.routes.url_helpers
+
   delegate_all
 
   def created_at
@@ -11,4 +15,17 @@ class BookDecorator < Drape::Decorator
     cover_file_name || 'placeholder.png'
   end
 
+  def library_link(user)
+    if in_library?(user)
+      link_to fa_icon('minus-square', text: 'Remove from Library'), remove_from_library_book_path(id)
+    else
+      link_to fa_icon('plus-square', text: 'Add to Library'), add_to_library_book_path(id)
+    end
+  end
+
+  private
+
+  def in_library?(user)
+    user.shelves.any? { |shelf| shelf.books.include? object }
+  end
 end
