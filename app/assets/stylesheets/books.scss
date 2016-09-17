@@ -10,6 +10,7 @@ body {
   }
 
   .read__container {
+    margin-top: 25px;
     min-height: 100vh;
   }
 
@@ -29,9 +30,10 @@ body {
   }
 
   .chapter__title, .part__title {
-    color: rgb(50, 50, 50);
+    color: $read-grey;
     font-family: 'Playfair Display', serif;
     font-style: italic;
+    margin-bottom: 25px;
   }
 
   .chapter__title {
@@ -45,16 +47,39 @@ body {
   }
 
   .part__content {
-    color: rgb(50, 50, 50);
+    color: $read-grey;
     font-family: 'Raleway', sans-serif;
     font-size: 18pt;
     font-weight: 200;
   }
 
+  .decision-point__question, .decision-point__answer {
+    text-align: center;
+  }
+
+  .decision-point__question {
+    border-top: solid $read-grey 1px;
+    font-family: 'Playfair Display', serif;
+    font-size: 30pt;
+    font-weight: 400;
+    margin-top: 15px;
+  }
+
+  .decision-point__answer a {
+    color: $read-grey;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24pt;
+    font-weight: 200;
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
   // This part below is important due to overwrite some strange default tinymce styles
 
   .part__content p {
-    color: rgb(50, 50, 50) !important;
+    color: $read-grey !important;
     font-family: 'Raleway', sans-serif !important;
     font-size: 18pt !important;
     font-weight: 200 !important;
