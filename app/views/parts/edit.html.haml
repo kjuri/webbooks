@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-sm-12
+      %h2 Create new part
+      = simple_form_for [@book, @chapter, @part] do |f|
+        .row
+          .col-sm-12
+            .form-group
+              = f.input :title
+          .col-sm-12
+            .form-group
+              = f.input :content, as: :text, input_html: { class: 'tinymce', rows: 20 }
+              = tinymce
+        .row
+          .col-sm-12
+            = f.submit 'Edit part', class: 'btn btn-success'

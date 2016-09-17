@@ -1,4 +1,4 @@
-class PartsController < ApplicationController  
+class PartsController < ApplicationController
   def index
     @parts = Part.where(chapter: chapter).decorate
   end
@@ -34,7 +34,7 @@ class PartsController < ApplicationController
       @part = @part.sync
       @part.save
       flash[:notice] = 'Part successfully updated'
-      redirect_to book_part_path(@book, @chapter, @part)
+      redirect_to edit_book_chapter_part_decision_point_path(@book, @chapter, @part)
     else
       render :edit
     end

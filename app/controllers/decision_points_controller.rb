@@ -1,4 +1,4 @@
-class DecisionPointsController < ApplicationController  
+class DecisionPointsController < ApplicationController
   def new
     decision_point
   end
@@ -38,13 +38,13 @@ class DecisionPointsController < ApplicationController
 
   def decision_point
     part and chapter
+    @parts = book.parts
     @decision_point ||=
       if params[:id]
         DecisionPoint.find(params[:id])
       else
         DecisionPoint.new(part_id: params[:part_id])
       end
-    @parts = book.parts
   end
 
   def part
