@@ -1,4 +1,4 @@
-class DecisionPointsController < ApplicationController
+class DecisionPointsController < ApplicationController  
   def new
     decision_point
   end

@@ -2,19 +2,23 @@ class BooksController < ApplicationController
   layout :choose_layout
 
   def index
-    @books = Book.where(user: current_user).decorate
+    authorize! :index, Book
+    @books = Book.accessible_by(current_ability).decorate
   end
 
   def show
     book
+    authorize! :show, @book
     @chapters = book.chapters.decorate
   end
 
   def new
     @book = new_book_form
+    authorize! :create, @book
   end
 
   def browse
+    authorize! :browse, Book
     @books = {
       best: Book.best(12).decorate,
       latest: Book.order(created_at: :desc).limit(12).decorate
@@ -22,6 +26,7 @@ class BooksController < ApplicationController
   end
 
   def read
+    authorize! :read_book, book
     @part ||= if progress.any?
       progress.first.part
     elsif book.chapters.first.parts.any?
@@ -34,6 +39,7 @@ class BooksController < ApplicationController
 
   def create
     @book = new_book_form
+    authorize! :create, @book
     if @book.validate(params[:book])
       @book.save do |data|
         @book = Book.create(data)
@@ -47,10 +53,12 @@ class BooksController < ApplicationController
 
   def edit
     @book = edit_book_form
+    authorize! :update, @book
   end
 
   def update
     @book = edit_book_form
+    authorize! :update, @book
     if @book.validate(params[:book])
       @book = @book.sync
       @book.save
@@ -62,6 +70,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, book
     if book.destroy
       flash[:notice] = 'Book successfully deleted'
       redirect_to books_path

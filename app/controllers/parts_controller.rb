@@ -1,4 +1,4 @@
-class PartsController < ApplicationController
+class PartsController < ApplicationController  
   def index
     @parts = Part.where(chapter: chapter).decorate
   end

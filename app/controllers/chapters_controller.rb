@@ -1,4 +1,4 @@
-class ChaptersController < ApplicationController
+class ChaptersController < ApplicationController  
   def index
     @chapters = Chapter.where(book: book).decorate
   end
