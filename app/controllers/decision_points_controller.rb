@@ -19,6 +19,7 @@ class DecisionPointsController < ApplicationController
   end
 
   def update
+    decision_point.update_attribute(:part, part)
     if decision_point.update_attributes(decision_point_params)
       flash[:notice] = 'Decision Point successfully updated'
       redirect_to book_chapter_path(book, chapter)
