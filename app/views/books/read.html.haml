@@ -7,3 +7,9 @@
 .row
   .col-sm-12.part__content
     = @part.content.html_safe
+.row
+  .col-sm-12.decision-point__question
+    = @part.decision_point.question
+  - @part.decision_point.answers.each do |answer|
+    .col-sm-12.decision-point__answer
+      = link_to answer.answer, read_book_path(part_id: answer.part_id)
