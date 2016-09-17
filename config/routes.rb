@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       end
     end
     resources :reviews, except: [:show]
-    get 'read', on: :member
+    get 'read(/:part_id)', action: :read, on: :member, as: 'read'
     get 'add_to_library', on: :member
     get 'remove_from_library', on: :member
     get 'browse', on: :collection

@@ -27,7 +27,10 @@ class BooksController < ApplicationController
 
   def read
     authorize! :read_book, book
-    @part ||= if progress.any?
+    @part ||= if params[:part_id]
+      register_progress
+      Part.find(params[:part_id])
+    elsif progress.any?
       progress.first.part
     elsif book.chapters.first.parts.any?
       book.chapters.first.parts.first
@@ -82,6 +85,20 @@ class BooksController < ApplicationController
   def choose_layout
     return 'webbook' if action_name == 'read'
     'application'
+  end
+
+  def register_progress
+    create_progress and return unless progress.any?
+    progress.first.update_attributes(last_activity: Time.now, part_id: params[:part_id])
+  end
+
+  def create_progress
+    Progress.create(
+      last_activity: Time.now,
+      book: book,
+      part_id: params[:part_id],
+      user: current_user
+    )
   end
 
   def book
