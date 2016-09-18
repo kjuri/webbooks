@@ -61,6 +61,9 @@ class DecisionPointsController < ApplicationController
   end
 
   def decision_point_params
-    params.require(:decision_point).permit(:question, answers_attributes: [:answer, :part_id])
+    params.require(:decision_point).permit(
+      :question,
+      answers_attributes: [:id, :answer, :part_id, :_destroy]
+    )
   end
 end
