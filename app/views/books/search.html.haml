@@ -1,0 +1,14 @@
+.row
+  .col.sm-12
+    %h2
+      Search books
+      %small.text-muted.book__subtitle
+        = params[:query]
+.row
+- if @books.empty?
+  .lead
+    Nothing found for your query :( You can try again.
+    = render partial: 'search_form'
+- else
+  - @books.each do |book|
+    = render partial: 'book_card', locals: { book: book }

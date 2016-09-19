@@ -14,6 +14,10 @@ class Book < ApplicationRecord
     default_url: "/images/placeholder.png"
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
-  
+
   scope :best, -> (n = 10) { order(created_at: :desc).limit(n) }
+  scope :search, (lambda do |query|
+    where("title LIKE :query OR subtitle LIKE :query " \
+      "OR short_description LIKE :query OR description LIKE :query", { query: "%#{query}%" })
+  end)
 end

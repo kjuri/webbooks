@@ -25,6 +25,11 @@ class BooksController < ApplicationController
     }
   end
 
+  def search
+    authorize! :browse, Book
+    @books = Book.search(params[:query]).decorate
+  end
+
   def read
     authorize! :read_book, book
     @part ||= if params[:part_id]

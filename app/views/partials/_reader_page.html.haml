@@ -1,12 +1,15 @@
-%h3 Your library
-= link_to 'Add new shelf', new_shelf_path, class: 'btn btn-outline-primary'
-= link_to 'Browse books', browse_books_path, class: 'btn btn-outline-primary'
-= link_to 'Browse genres', genres_path, class: 'btn btn-outline-primary'
+.row
+  %h3 Your library
+  .col-sm-6.book__links
+    = link_to 'Add new shelf', new_shelf_path, class: 'btn btn-outline-primary'
+    = link_to 'Browse books', browse_books_path, class: 'btn btn-outline-primary'
+    = link_to 'Browse genres', genres_path, class: 'btn btn-outline-primary'
+  .col-sm-6.book__search
+    = render partial: 'search_form'
 .row
 - current_user.shelves.each do |shelf|
   .col-sm-4.section
     .card
-      = image_tag 'placeholder.png', class: 'card-img-top card-image'
       .card-block.text-xs-center
         %h3.card-title
           = shelf.name
