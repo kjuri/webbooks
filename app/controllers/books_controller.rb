@@ -55,13 +55,13 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = edit_book_form
     authorize! :update, book
+    @book = edit_book_form
   end
 
   def update
-    @book = edit_book_form
     authorize! :update, book
+    @book = edit_book_form
     if @book.validate(params[:book])
       @book = @book.sync
       @book.save
