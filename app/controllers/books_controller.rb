@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   def new
     @book = new_book_form
-    authorize! :create, @book
+    authorize! :create, Book
   end
 
   def browse
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
 
   def create
     @book = new_book_form
-    authorize! :create, @book
+    authorize! :create, Book
     if @book.validate(params[:book])
       @book.save do |data|
         @book = Book.create(data)
@@ -56,12 +56,12 @@ class BooksController < ApplicationController
 
   def edit
     @book = edit_book_form
-    authorize! :update, @book
+    authorize! :update, book
   end
 
   def update
     @book = edit_book_form
-    authorize! :update, @book
+    authorize! :update, book
     if @book.validate(params[:book])
       @book = @book.sync
       @book.save
