@@ -11,4 +11,4 @@
   .row
     .col-sm-12
       .form-group
-        = f.submit 'Create Decision Point', class: 'btn btn-success'
+        = f.submit "#{params[:action].capitalize} decision point", class: 'btn btn-success'
