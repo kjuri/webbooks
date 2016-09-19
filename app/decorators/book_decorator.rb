@@ -11,8 +11,8 @@ class BookDecorator < Drape::Decorator
     end
   end
 
-  def cover
-    cover_file_name || 'placeholder.png'
+  def cover_file
+    cover.present? ? cover.url : 'placeholder.png'
   end
 
   def library_link(user)

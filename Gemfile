@@ -28,6 +28,7 @@ gem 'drape'
 gem 'tinymce-rails'
 gem 'font-awesome-rails'
 gem 'cocoon'
+gem 'file_validators'
 
 group :development, :test do
   gem 'byebug', platform: :mri
