@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :shelves, except: [:index]
+  resources :genres, only: [:index, :show]
 
   root to: 'home#index'
 end

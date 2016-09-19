@@ -1,0 +1,9 @@
+.col-sm-3.section
+  .card
+    .card-block.text-xs-center
+      %h3.card-title.genre__name
+        = link_to genre.name, genre_path(genre)
+      %h4.cart-subtitle.text-muted.genre__book-count
+        = genre.books.size
+      %p.card-text.genre__description
+        = genre.description

@@ -1,6 +1,7 @@
 %h3 Your library
 = link_to 'Add new shelf', new_shelf_path, class: 'btn btn-outline-primary'
 = link_to 'Browse books', browse_books_path, class: 'btn btn-outline-primary'
+= link_to 'Browse genres', genres_path, class: 'btn btn-outline-primary'
 .row
 - current_user.shelves.each do |shelf|
   .col-sm-4.section
