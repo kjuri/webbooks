@@ -10,8 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if Rails.env.development?
       render text: confirmation_url(resource.model,
                                     confirmation_token: resource.model.confirmation_token)
-    else
-      resource.model.send_confirmation_instructions
     end
   end
 
