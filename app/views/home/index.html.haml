@@ -5,6 +5,6 @@
       - if user_signed_in?
         %h2 #{current_user.primary_role_name}'s panel
   - if user_signed_in?
-    = render partial: current_user.home_partial unless user.admin?
+    = render partial: current_user.home_partial unless current_user.admin?
   - else
     = render partial: 'partials/home'
