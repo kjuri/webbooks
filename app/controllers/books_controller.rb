@@ -32,6 +32,7 @@ class BooksController < ApplicationController
   def details
     authorize! :read_book, book
     @book = @book.decorate
+    @reviews = @book.reviews.decorate
   end
 
   def read

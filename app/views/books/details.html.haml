@@ -28,7 +28,7 @@
   .col-sm-12
     = link_to 'Review this book', new_book_review_path(@book.id), class: 'btn btn-outline-primary btn-lg'
   - if @book.reviews.any?
-    - @book.reviews.each do |review|
+    - @reviews.each do |review|
       = render partial: 'review', locals: { review: review }
   - else
     = "#{@book.title} has no reviews yet."
