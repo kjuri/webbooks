@@ -12,6 +12,6 @@
     .card
       .card-block.text-xs-center
         %h3.card-title
-          = shelf.name
+          = link_to shelf.name, shelf
         %p.card-text
           = shelf.description
