@@ -7,13 +7,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     yield resource if block_given?
     render 'new' unless resource.save
+    if Rails.env.development?
+      render text: confirmation_url(resource.model,
+                                    confirmation_token: resource.model.confirmation_token)
+    end
   end
 
   protected
 
   def build_resource(hash = nil)
-    self.resource = Users::RegistrationForm.new(resource_class.new)
+    self.resource = registration_form
     resource.validate hash unless hash.nil? || hash.length.zero?
+  end
+
+  def registration_form
+    Users::RegistrationForm.new(resource_class.new)
   end
 
   def configure_permitted_parameters

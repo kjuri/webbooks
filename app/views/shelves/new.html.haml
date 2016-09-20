@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-sm-12
+      %h2 Create new shelf
+      = simple_form_for @shelf do |f|
+        .row
+          .col-sm-12
+            .form-group
+              = f.input :name, class: 'form-control'
+            .form-group
+              = f.input :description, as: :text, class: 'form-control'
+            .form-group
+              = f.input :private, as: :boolean, class: 'form-control'
+        .row
+          .col-sm-12
+            = f.submit 'Create shelf', class: 'btn btn-success'

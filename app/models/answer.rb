@@ -1,3 +1,3 @@
-class Answer
-  attr_accessor :answer, :part_id
+class Answer < ApplicationRecord
+  belongs_to :decision_point
 end

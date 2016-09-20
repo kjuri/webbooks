@@ -21,7 +21,17 @@ resources :genres
         resources :decision_points
       end
     end
+    resources :reviews, except: [:show]
+    get 'search', on: :collection
+    get 'details', on: :member
+    get 'read(/:part_id)', action: :read, on: :member, as: 'read'
+    match 'add_to_library', action: :add_to_library, on: :member, via: [:get, :post]
+    delete 'remove_from_library', on: :member
+    get 'browse', on: :collection
   end
+
+  resources :shelves, except: [:index]
+  resources :genres, only: [:index, :show]
 
   root to: 'home#index'
 end

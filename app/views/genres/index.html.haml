@@ -1,0 +1,6 @@
+.row
+  .col.sm-12
+    %h2 Browse genres
+.row
+  - @genres.each do |genre|
+    = render partial: 'genre_card', locals: { genre: genre }

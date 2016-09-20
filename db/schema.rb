@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823194120) do
+ActiveRecord::Schema.define(version: 20160915221801) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "answer"
+    t.integer "decision_point_id"
+    t.integer "part_id"
+    t.index ["decision_point_id"], name: "index_answers_on_decision_point_id", using: :btree
+  end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "short_description"
-    t.text     "description",       limit: 65535
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.text     "description",        limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "user_id"
+    t.string   "subtitle"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
   create_table "books_genres", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -25,6 +39,13 @@ ActiveRecord::Schema.define(version: 20160823194120) do
     t.integer "book_id",  null: false
     t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id", using: :btree
     t.index ["genre_id", "book_id"], name: "index_books_genres_on_genre_id_and_book_id", using: :btree
+  end
+
+  create_table "books_shelves", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "book_id",  null: false
+    t.integer "shelf_id", null: false
+    t.index ["book_id", "shelf_id"], name: "index_books_shelves_on_book_id_and_shelf_id", using: :btree
+    t.index ["shelf_id", "book_id"], name: "index_books_shelves_on_shelf_id_and_book_id", using: :btree
   end
 
   create_table "chapters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,10 +58,9 @@ ActiveRecord::Schema.define(version: 20160823194120) do
 
   create_table "decision_points", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "question"
-    t.text     "answers",    limit: 65535
     t.integer  "part_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["part_id"], name: "index_decision_points_on_part_id", using: :btree
   end
 
@@ -49,12 +69,49 @@ ActiveRecord::Schema.define(version: 20160823194120) do
     t.string "description"
   end
 
+  create_table "libraries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_libraries_on_user_id", using: :btree
+  end
+
   create_table "parts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535
     t.integer  "chapter_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "title"
     t.index ["chapter_id"], name: "index_parts_on_chapter_id", using: :btree
+  end
+
+  create_table "progresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "last_activity"
+    t.integer  "book_id"
+    t.integer  "part_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["book_id"], name: "index_progresses_on_book_id", using: :btree
+    t.index ["part_id"], name: "index_progresses_on_part_id", using: :btree
+    t.index ["user_id"], name: "index_progresses_on_user_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "private"
+    t.integer  "library_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["library_id"], name: "index_shelves_on_library_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,4 +148,12 @@ ActiveRecord::Schema.define(version: 20160823194120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "decision_points"
+  add_foreign_key "books", "users"
+  add_foreign_key "libraries", "users"
+  add_foreign_key "progresses", "books"
+  add_foreign_key "progresses", "parts"
+  add_foreign_key "progresses", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "shelves", "libraries"
 end

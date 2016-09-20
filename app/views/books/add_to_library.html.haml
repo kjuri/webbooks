@@ -1,0 +1,14 @@
+.row
+  .col-sm-12
+    %h2
+      Add to Library
+      %small.text-muted.book__subtitle
+        = @book.title
+.row
+  = form_tag add_to_library_book_path, method: :post do
+    .col-sm-6
+      .form-group
+        = select_tag :shelf, options_from_collection_for_select(current_user.shelves, :id, :name), include_blank: '(select shelf from your library)', class: 'form-control'
+    .col-sm-4
+      .form-group
+        = submit_tag 'Add to Library', class: 'btn btn-success'

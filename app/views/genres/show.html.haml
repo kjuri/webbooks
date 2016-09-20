@@ -1,0 +1,6 @@
+.row
+  .col.sm-12
+    %h2 #{@genre.name}
+.row
+  - @books.each do |book|
+    = render partial: 'books/book_card', locals: { book: book }

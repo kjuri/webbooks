@@ -1,0 +1,10 @@
+.row
+  .col.sm-12
+    %h2 Browse books
+- @books.each do |key, collection|
+  .row
+    .col.sm-12
+      %h3 #{key.to_s.capitalize} books
+    .row
+    - collection.each do |book|
+      = render partial: 'book_card', locals: { book: book }

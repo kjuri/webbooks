@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-sm-12
+      %h2 Create new chapter
+      = simple_form_for [@book, @chapter] do |f|
+        .row
+          .col-sm-6
+            .form-group
+              = f.input :title, class: 'form-control'
+        .row
+          .col-sm-12
+            = f.submit 'Create chapter', class: 'btn btn-success'

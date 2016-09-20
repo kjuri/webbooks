@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-sm-12
+      %h2.display-3.book__title
+        = @book.title
+        %small.text-muted.book__subtitle
+          = @book.subtitle
+  .row
+    .col-sm-12.book__details
+      %dl.row
+        %dt.col-sm-3
+          = Book.human_attribute_name :created_at
+        %dd.col-sm-9
+          = @book.created_at
+        %dt.col-sm-3
+          = Book.human_attribute_name :short_description
+        %dd.col-sm-9
+          = @book.short_description
+        %dt.col-sm-3
+          = Book.human_attribute_name :description
+        %dd.col-sm-9
+          = @book.description
+  .row
+    .col-sm-12.book__chapters
+      %h3.book__chapters__header Chapters (#{@book.chapters.size})
+      - if @book.chapters.size.zero?
+        There are no chapters yet, too add one click
+        = link_to 'here', new_book_chapter_path(@book)
+      - else
+        = render template: 'chapters/index'

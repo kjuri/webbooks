@@ -1,0 +1,19 @@
+%nav.navbar.navbar-full.navbar-dark.bg-inverse
+  = link_to 'WebBooks', root_path, class: 'navbar-brand'
+  - if @book
+    %ul.nav.navbar-nav.book__details.hidden-sm-down
+      %li.nav-item.book__details-title
+        = @book.title
+      %li.nav-item.book__details-subtitle
+        = @book.subtitle
+  %ul.nav.navbar-nav.pull-xs-right
+    - if user_signed_in?
+      %li.nav-item
+        = link_to current_user.profile_link_text, root_path, class: 'nav-link'
+      %li.nav-item
+        = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-warning'
+    - else
+      %li.nav-item
+        = link_to 'Sign up', new_user_registration_path, class: 'btn btn-outline-success'
+      %li.nav-item
+        = link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-secondary'
