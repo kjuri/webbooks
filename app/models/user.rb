@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :confirmable
 
-  has_one :library
+  has_one :library, dependent: :destroy
   has_many :shelves, through: :library
   has_many :books
   has_many :progresses
