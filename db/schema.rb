@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915221801) do
+ActiveRecord::Schema.define(version: 20160920170401) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string  "answer"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 20160915221801) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "book_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
@@ -154,6 +156,7 @@ ActiveRecord::Schema.define(version: 20160915221801) do
   add_foreign_key "progresses", "books"
   add_foreign_key "progresses", "parts"
   add_foreign_key "progresses", "users"
+  add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
   add_foreign_key "shelves", "libraries"
 end
