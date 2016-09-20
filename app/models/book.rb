@@ -3,8 +3,8 @@ class Book < ApplicationRecord
 
   has_many :chapters, dependent: :destroy
   has_many :parts, through: :chapters
-  has_many :reviews, dependend: :destroy
-  has_many :progresses, dependend: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :progresses, dependent: :destroy
 
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :shelves
