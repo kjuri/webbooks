@@ -50,7 +50,7 @@ class ReviewsController < ApplicationController
   end
 
   def new_review_form
-    ReviewForm.new(Review.new(book: book))
+    ReviewForm.new(Review.new(book: book, user: current_user))
   end
 
   def edit_review_form

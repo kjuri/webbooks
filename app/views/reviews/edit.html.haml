@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-sm-12
+      %h2 Edit your review
+      = simple_form_for [@book, @review] do |f|
+        .row
+          .col-sm-3
+            .form-group
+              = f.input :rating, collection: 0..10, class: 'form-control'
+          .col-sm-9
+            .form-group
+              = f.input :content, as: :text, class: 'form-control', input_html: { rows: 5 }
+        .row
+          .col-sm-12
+            = f.submit 'Update review', class: 'btn btn-success'
