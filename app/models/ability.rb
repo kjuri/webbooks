@@ -17,6 +17,10 @@ class Ability
   def writer
     can :manage, Book, user_id: @user.id
     can :create, Book
+    can :manage, Chapter, book: { user_id: @user.id }
+    can :manage, Part, chapter: { book: { user_id: @user.id } }
+    can :manage, DecisionPoint, part: { chapter: { book: { user_id: @user.id } } }
+    can :manage, Answer, decision_pont: { part: { chapter: { book: { user_id: @user.id } } } }
   end
 
   def reader
