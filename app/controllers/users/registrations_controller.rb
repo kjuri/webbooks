@@ -32,6 +32,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    resource.sign_in_path
+    resource.model.sign_in_path
   end
 end
