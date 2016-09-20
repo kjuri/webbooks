@@ -15,7 +15,12 @@ class Book < ApplicationRecord
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-  scope :best, -> (n = 10) { order(created_at: :desc).limit(n) }
+  scope :best, -> (n = 10) {
+    joins(:reviews)
+      .select('books.*, avg(reviews.rating) as avg_rating')
+      .group('books.id')
+      .order('avg_rating desc').limit(n)
+  }
   scope :search, (lambda do |query|
     where("title LIKE :query OR subtitle LIKE :query " \
       "OR short_description LIKE :query OR description LIKE :query", { query: "%#{query}%" })
