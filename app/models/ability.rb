@@ -22,5 +22,7 @@ class Ability
   def reader
     can :browse, Book
     can :read_book, Book
+    can :manage, Shelf, library: { user_id: @user.id }
+    can :create, Shelf
   end
 end
