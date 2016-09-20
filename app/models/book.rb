@@ -1,10 +1,10 @@
 class Book < ApplicationRecord
   belongs_to :user
 
-  has_many :chapters
+  has_many :chapters, dependent: :destroy
   has_many :parts, through: :chapters
-  has_many :reviews
-  has_many :progresses
+  has_many :reviews, dependend: :destroy
+  has_many :progresses, dependend: :destroy
 
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :shelves
