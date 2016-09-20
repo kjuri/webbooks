@@ -1,6 +1,32 @@
 toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
+  - styleselect | undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | fontselect fontsizeselect | removeformat blockquote bullist numlist | table | forecolor backcolor
+  - hr charmap link pastetext code nonbreaking | image editimage imageoptions | media | emoticons
 plugins:
   - image
+  - imagetools
   - link
+  - hr
+  - charmap
+  - code
+  - paste
+  - media
+  - nonbreaking
+  - table
+  - emoticons
+  - textcolor
+content_css:
+  - /assets/common/googlefonts.css
+font_formats:
+  - Arial=arial,helvetica,sans-serif
+  - Arial Black=arial black,avant garde
+  - Book Antiqua=book antiqua,palatino
+  - Courier New=courier new,courier,monospace
+  - Century Gothic=century_gothic
+  - Georgia=georgia,palatino
+  - Helvetica=helvetica
+  - Playfair Display=playfair display,serif
+  - Raleway=raleway,sans-serif
+  - Tahoma=tahoma,arial,helvetica,sans-serif
+  - Times New Roman=times new roman,times
+  - Trebuchet MS=trebuchet ms,geneva
+  - Webdings=webdings
