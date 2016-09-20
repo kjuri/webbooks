@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :decision_points
       end
     end
-    resources :reviews, except: [:show]
+    resources :reviews, except: [:index, :show]
     get 'search', on: :collection
     get 'details', on: :member
     get 'read(/:part_id)', action: :read, on: :member, as: 'read'

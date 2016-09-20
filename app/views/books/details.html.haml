@@ -22,3 +22,13 @@
         = book.library_link(current_user) if user_signed_in?
   .col-sm-5
     = image_tag @book.cover.url, class: 'book__cover'
+.row
+  .col-sm-12
+    %h3 Reviews
+  .col-sm-12
+    = link_to 'Review this book', new_book_review_path(@book.id), class: 'btn btn-outline-primary btn-lg'
+  - if @book.reviews.any?
+    - @book.reviews.each do |review|
+      = render partial: 'review', locals: { review: review }
+  - else
+    = "#{@book.title} has no reviews yet."
