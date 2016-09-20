@@ -16,6 +16,9 @@
       .col-sm-12
         %h2 Reader's count
         = @book.progresses.size
+      .col-sm-12
+        %h2 Average rating
+        = @book.average_rating
     .row
       .col-sm-12
         = link_to 'Read this book', read_book_path(@book), class: 'btn btn-primary btn-lg'

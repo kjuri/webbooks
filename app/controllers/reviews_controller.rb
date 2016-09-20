@@ -42,6 +42,7 @@ class ReviewsController < ApplicationController
   private
 
   def review
+    book
     @review ||= Review.find(params[:id])
   end
 

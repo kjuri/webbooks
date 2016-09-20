@@ -24,6 +24,10 @@ class BookDecorator < Drape::Decorator
     end
   end
 
+  def average_rating
+    "#{reviews.average(:rating).to_f.round(2)} / 10"
+  end
+
   private
 
   def in_library?(user)
