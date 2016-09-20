@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :shelves
     resources :answers
+    resources :progresses
 
     root to: "users#index"
   end
