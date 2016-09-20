@@ -49,6 +49,30 @@ class BooksController < ApplicationController
     end
   end
 
+  def add_to_library
+    authorize! :read_book, book
+    if params[:shelf]
+      shelf.books << book
+      if shelf.save
+        flash[:notice] = "#{book.title} has been added to shelf #{shelf.name}"
+      else
+        flash[:alert] = 'Some error occured while adding book to shelf. Please try again.'
+      end
+      redirect_to browse_books_path
+    end
+  end
+
+  def remove_from_library
+    authorize! :read_book, book
+    shelves = library.shelves.select { |s| s.books.include?(book) }
+    if shelves.each { |s| s.books.delete(book) and s.save }
+      flash[:notice] = "#{book.title} has been removed from your library"
+    else
+      flash[:alert] = 'Some error occured while removing this book from your library. Please try again.'
+    end
+    redirect_to browse_books_path
+  end
+
   def create
     authorize! :create, Book
     @book = new_book_form
@@ -116,6 +140,14 @@ class BooksController < ApplicationController
 
   def progress
     @progress ||= book.progresses.where(user: current_user)
+  end
+
+  def library
+    @library ||= current_user.library
+  end
+
+  def shelf
+    @shelf ||= Shelf.find(params[:shelf])
   end
 
   helper_method :book

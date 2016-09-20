@@ -17,7 +17,8 @@ class BookDecorator < Drape::Decorator
 
   def library_link(user)
     if in_library?(user)
-      link_to fa_icon('minus-square', text: 'Remove from Library'), remove_from_library_book_path(id)
+      link_to fa_icon('minus-square', text: 'Remove from Library'),
+        remove_from_library_book_path(id), method: :delete
     else
       link_to fa_icon('plus-square', text: 'Add to Library'), add_to_library_book_path(id)
     end

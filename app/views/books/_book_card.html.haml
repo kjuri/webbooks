@@ -8,4 +8,3 @@
         = book.subtitle
       %p.card-text
         = book.short_description
-      = book.library_link(current_user) if !params[:controller] = 'shelves' && user_signed_in?
