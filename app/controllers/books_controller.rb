@@ -7,14 +7,13 @@ class BooksController < ApplicationController
   end
 
   def show
-    book
-    authorize! :show, @book
+    authorize! :show, book
     @chapters = book.chapters.decorate
   end
 
   def new
-    @book = new_book_form
     authorize! :create, Book
+    @book = new_book_form
   end
 
   def browse
@@ -51,8 +50,8 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = new_book_form
     authorize! :create, Book
+    @book = new_book_form
     if @book.validate(params[:book])
       @book.save do |data|
         @book = Book.create(data)
