@@ -10,10 +10,12 @@ class PartDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     chapter: Field::BelongsTo,
     decision_point: Field::HasOne,
+    progresses: Field::HasMany,
     id: Field::Number,
     content: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    title: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,8 +26,8 @@ class PartDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :chapter,
     :decision_point,
+    :progresses,
     :id,
-    :content,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,10 +35,12 @@ class PartDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :chapter,
     :decision_point,
+    :progresses,
     :id,
     :content,
     :created_at,
     :updated_at,
+    :title,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,7 +49,9 @@ class PartDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :chapter,
     :decision_point,
+    :progresses,
     :content,
+    :title,
   ].freeze
 
   # Overwrite this method to customize how parts are displayed
