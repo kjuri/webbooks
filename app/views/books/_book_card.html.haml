@@ -1,6 +1,6 @@
 .col-sm-3.section
   .card
-    = link_to image_tag(book.cover_file, class: 'card-img-top card-image'), details_book_path(book)
+    = link_to image_tag(book.cover.url, class: 'card-img-top card-image'), details_book_path(book)
     .card-block.text-xs-center
       %h3.card-title.book__title
         = book.title
@@ -8,4 +8,4 @@
         = book.subtitle
       %p.card-text
         = book.short_description
-      = book.library_link(current_user) if user_signed_in?
+      = book.library_link(current_user) if !params[:controller] = 'shelves' && user_signed_in?

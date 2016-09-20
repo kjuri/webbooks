@@ -5,7 +5,7 @@ class ShelvesController < ApplicationController
 
   def new
     authorize! :create, Shelf
-    @shelf = create_shelf_form
+    @shelf = new_shelf_form
   end
 
   def create
@@ -13,7 +13,7 @@ class ShelvesController < ApplicationController
     @shelf = new_shelf_form
     if @shelf.validate(params[:shelf])
       @shelf.save do |data|
-        @shelf = @shelf.create(data)
+        @shelf = Shelf.create(data)
         flash[:notice] = 'Shelf successfully created'
         redirect_to shelf_path(@shelf)
       end
@@ -54,7 +54,7 @@ class ShelvesController < ApplicationController
     @shelf ||= Shelf.find(params[:id])
   end
 
-  def create_shelf_form
+  def new_shelf_form
     ShelfForm.new(Shelf.new(library: current_user.library))
   end
 
