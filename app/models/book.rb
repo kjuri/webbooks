@@ -11,7 +11,7 @@ class Book < ApplicationRecord
 
   has_attached_file :cover,
     styles: { medium: "300x300>", thumb: "253x325>" },
-    default_url: "/images/placeholder.png"
+    default_url: "/assets/placeholder.png"
 
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 

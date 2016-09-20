@@ -76,6 +76,10 @@ body {
     }
   }
 
+  .book__cover {
+    max-width: 100%;
+  }
+
   // This part below is important due to overwrite some strange default tinymce styles
 
   .part__content p {

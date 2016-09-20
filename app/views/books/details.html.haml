@@ -1,0 +1,24 @@
+.row
+  .col-sm-12
+    %h1.display-3
+      = @book.title
+      %small.text-muted.book__subtitle
+        = @book.subtitle
+.row
+  .col-sm-7
+    .row
+      .col-sm-12
+        %h2 About this book
+        = @book.description
+      .col-sm-12
+        %h2 Author
+        = @book.user.username
+      .col-sm-12
+        %h2 Reader's count
+        = @book.progresses.size
+    .row
+      .col-sm-12
+        = link_to 'Read this book', read_book_path(@book), class: 'btn btn-primary btn-lg'
+        = book.library_link(current_user) if user_signed_in?
+  .col-sm-5
+    = image_tag @book.cover.url, class: 'book__cover'

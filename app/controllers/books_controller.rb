@@ -30,6 +30,11 @@ class BooksController < ApplicationController
     @books = Book.search(params[:query]).decorate
   end
 
+  def details
+    authorize! :read_book, book
+    @book = @book.decorate
+  end
+
   def read
     authorize! :read_book, book
     @part ||= if params[:part_id]
