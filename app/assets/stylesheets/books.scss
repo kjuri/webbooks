@@ -80,13 +80,4 @@ body {
   .book__cover {
     max-width: 100%;
   }
-
-  // This part below is important due to overwrite some strange default tinymce styles
-
-  .part__content p {
-    color: $read-grey !important;
-    font-family: 'Raleway', sans-serif !important;
-    font-size: 18pt !important;
-    font-weight: 200 !important;
-  }
 }
