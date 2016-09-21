@@ -7,9 +7,7 @@ class BookForm < BaseForm
   property :cover
 
   collection :chapters, form: ChapterForm
-  collection :genres do
-    property :name
-  end
+  collection :genre_ids
 
   validates :title, presence: true
   validates :short_description, presence: true, length: { maximum: 255 }
