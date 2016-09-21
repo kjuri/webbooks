@@ -12,7 +12,6 @@ class ProgressDashboard < Administrate::BaseDashboard
     book: Field::BelongsTo,
     part: Field::BelongsTo,
     id: Field::Number,
-    last_activity: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -36,7 +35,6 @@ class ProgressDashboard < Administrate::BaseDashboard
     :book,
     :part,
     :id,
-    :last_activity,
     :created_at,
     :updated_at,
   ].freeze
@@ -48,7 +46,6 @@ class ProgressDashboard < Administrate::BaseDashboard
     :user,
     :book,
     :part,
-    :last_activity,
   ].freeze
 
   # Overwrite this method to customize how progresses are displayed

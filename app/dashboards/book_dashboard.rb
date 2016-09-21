@@ -22,10 +22,6 @@ class BookDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     subtitle: Field::String,
-    cover_file_name: Field::String,
-    cover_content_type: Field::String,
-    cover_file_size: Field::Number,
-    cover_updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -57,10 +53,6 @@ class BookDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :subtitle,
-    :cover_file_name,
-    :cover_content_type,
-    :cover_file_size,
-    :cover_updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -78,10 +70,6 @@ class BookDashboard < Administrate::BaseDashboard
     :short_description,
     :description,
     :subtitle,
-    :cover_file_name,
-    :cover_content_type,
-    :cover_file_size,
-    :cover_updated_at,
   ].freeze
 
   # Overwrite this method to customize how books are displayed
