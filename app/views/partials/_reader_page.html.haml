@@ -1,17 +1,20 @@
 .row
-  %h3 Your library
-  .col-sm-6.book__links
+  .col-sm-5.book__links
     = link_to 'Add new shelf', new_shelf_path, class: 'btn btn-outline-primary'
     = link_to 'Browse books', browse_books_path, class: 'btn btn-outline-primary'
     = link_to 'Browse genres', genres_path, class: 'btn btn-outline-primary'
-  .col-sm-6.book__search
+  .col-sm-7.book__search
     = render partial: 'books/search_form'
 .row
-- current_user.shelves.each do |shelf|
-  .col-sm-4.section
-    .card
-      .card-block.text-xs-center
-        %h3.card-title
-          = link_to shelf.name, shelf
-        %p.card-text
-          = shelf.description
+  .col-sm-12
+    %h3.library__header Your Library
+    .row
+    - current_user.shelves.each do |shelf|
+      .col-sm-4.section
+        .card.shelf
+          = link_to shelf do
+            .card-block.text-xs-center
+              %h3.card-title
+                = shelf.name
+              %p.card-text
+                = shelf.description

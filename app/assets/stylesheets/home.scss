@@ -16,6 +16,30 @@
   font-size: 14pt;
 }
 
+.shelf {
+  a {
+    color: #373a3c;
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+form.book__searchform {
+  input {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+  }
+}
+
+.library__header {
+  margin-bottom: 15px;
+}
+
 h1, h2, h3 {
   margin-top: 25px;
   font-family: 'Playfair Display';
