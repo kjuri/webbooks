@@ -18,14 +18,15 @@ class BookDecorator < Drape::Decorator
   def library_link(user)
     if in_library?(user)
       link_to fa_icon('minus-square', text: 'Remove from Library'),
-        remove_from_library_book_path(id), method: :delete
+        remove_from_library_book_path(id), method: :delete, class: 'btn btn-outline-warning btn-lg'
     else
-      link_to fa_icon('plus-square', text: 'Add to Library'), add_to_library_book_path(id)
+      link_to fa_icon('plus-square', text: 'Add to Library'), add_to_library_book_path(id),
+        class: 'btn btn-outline-success btn-lg'
     end
   end
 
   def average_rating
-    "#{reviews.average(:rating).to_f.round(2)} / 10"
+    "#{reviews.average(:rating).to_f.round(2)}"
   end
 
   private

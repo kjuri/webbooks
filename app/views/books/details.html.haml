@@ -11,25 +11,41 @@
         %h2 About this book
         = @book.description
       .col-sm-12
-        %h2 Author
-        = @book.user.username
+        %h2
+          Author
+          %small.text-muted.book__author
+            = @book.user.username
       .col-sm-12
-        %h2 Reader's count
-        = @book.progresses.size
+        %h2
+          Reader's count
+          %small.text-muted.book__readers
+            = @book.progresses.size
       .col-sm-12
-        %h2 Average rating
-        = @book.average_rating
-    .row
+        %h2
+          Chapters count
+          %small.text-muted.book__rating
+            = @book.chapters.count
       .col-sm-12
-        = link_to 'Read this book', read_book_path(@book), class: 'btn btn-primary btn-lg'
-        = book.library_link(current_user) if user_signed_in?
+        %h2
+          Part count
+          %small.text-muted.book__rating
+            = @book.parts.count
+      .col-sm-12
+        %h2
+          Average rating
+          %small.text-muted.book__rating
+            = @book.average_rating
   .col-sm-5
     = image_tag @book.cover.url, class: 'book__cover'
 .row
   .col-sm-12
+    = link_to 'Read this book', read_book_path(@book), class: 'btn btn-primary btn-lg'
+    = link_to 'Review this book', new_book_review_path(@book.id), class: 'btn btn-outline-primary btn-lg'
+    = book.library_link(current_user) if user_signed_in?
+.row
+  .col-sm-12
     %h3 Reviews
   .col-sm-12
-    = link_to 'Review this book', new_book_review_path(@book.id), class: 'btn btn-outline-primary btn-lg'
   - if @book.reviews.any?
     - @reviews.each do |review|
       = render partial: 'review', locals: { review: review }

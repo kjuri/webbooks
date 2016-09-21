@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
         redirect_to details_book_path(@book)
       end
     else
+      flash[:alert] = 'Something went wrong. Remember that you cannot review the same book twice.'
       render :new
     end
   end
