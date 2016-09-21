@@ -1,9 +1,8 @@
 .row
-  .col-sm-5.book__links
+  .col-sm-4.book__links
     = link_to 'Add new shelf', new_shelf_path, class: 'btn btn-outline-primary'
     = link_to 'Browse books', browse_books_path, class: 'btn btn-outline-primary'
-    = link_to 'Browse genres', genres_path, class: 'btn btn-outline-primary'
-  .col-sm-7.book__search
+  .col-sm-8.book__search
     = render partial: 'books/search_form'
 .row
   .col-sm-12

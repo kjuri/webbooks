@@ -1,10 +1,11 @@
 .row
   .col.sm-12
     %h2 Browse books
+    = link_to 'Browse by genres', genres_path, class: 'btn btn-outline-primary btn-lg'
 - @books.each do |key, collection|
   .row
     .col.sm-12
-      %h3 #{key.to_s.capitalize} books
+      %h3.browse__header #{key.to_s.capitalize} books
     .row
     - collection.each do |book|
       = render partial: 'book_card', locals: { book: book }
