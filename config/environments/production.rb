@@ -3,6 +3,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  config.tinymce.install = :compile
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
@@ -37,6 +38,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  config.assets.precompile << "tinymce-jquery.js"
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
