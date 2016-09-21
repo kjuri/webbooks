@@ -20,6 +20,10 @@
           = Book.human_attribute_name :description
         %dd.col-sm-9
           = @book.description
+        %dt.col-sm-3
+          = Book.human_attribute_name :cover
+        %dd.col-sm-9
+          = image_tag @book.cover.url(:medium)
   .row
     .col-sm-12.book__chapters
       %h3.book__chapters__header Chapters (#{@book.chapters.size})

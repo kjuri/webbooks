@@ -7,7 +7,7 @@
     = f.simple_fields_for :answers do |answer|
       = render 'answer_fields', f: answer
     .links
-      = link_to_add_association fa_icon('plus'), f, :answers, class: 'btn btn-info answer__button-add'
+      = link_to_add_association fa_icon('plus', text: 'Add new answer'), f, :answers, class: 'btn btn-info answer__button-add'
   .row
     .col-sm-12
       .form-group
