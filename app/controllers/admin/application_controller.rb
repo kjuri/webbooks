@@ -9,7 +9,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      raise CanCan::AccessDenied unless current_user && current_user.admin?
     end
 
     # Override this value to specify the number of elements to display at a time
