@@ -1,19 +1,26 @@
 .row
   .col-sm-4.section
     .card
-      = image_tag 'placeholder.png', class: 'card-img-top card-image'
+      = image_tag 'book.jpeg', class: 'card-img-top card-image'
       .card-block.text-xs-center
-        %h3.card-title Books
-        %p.card-text Manage your books or create new one
-        = link_to 'Show books', books_path, class: 'btn btn-outline-primary'
-        = link_to 'Create new book', new_book_path, class: 'btn btn-outline-primary'
+        %h3.card-title Your books
+        %p.card-text Manage your books.
+        - if current_user.books.empty?
+          = link_to "You don't have any books... yet", books_path, class: 'btn btn-outline-primary disabled'
+        - else
+          %p.card-text You wrote #{current_user.books.count} books.
+          = link_to 'Show books', books_path, class: 'btn btn-outline-primary'
   .col-sm-4.section
     .card
-      = image_tag 'placeholder.png', class: 'card-img-top card-image'
+      = image_tag 'typewriter.jpg', class: 'card-img-top card-image'
       .card-block.text-xs-center
-        %h3 Section 2
+        %h3.card-title New book
+        %p.card-text Create new book
+        = link_to 'Start writing', new_book_path, class: 'btn btn-outline-primary'
   .col-sm-4.section
     .card
-      = image_tag 'placeholder.png', class: 'card-img-top card-image'
+      = image_tag 'library.jpg', class: 'card-img-top card-image'
       .card-block.text-xs-center
-        %h3 Section 3
+        %h3.card-title Statistics
+        %p.card-text Here you will be able to check statistics about your works of art.
+        %button.btn.btn-outline-primary{disabled: true} Check some numbers
