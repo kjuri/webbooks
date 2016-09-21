@@ -8,7 +8,11 @@
   max-width: 100%
 }
 
-h1.home__header, h3.home__header {
+.navbar {
+  font-size: 14pt;
+}
+
+h1, h2, h3 {
   margin-top: 25px;
   font-family: 'Playfair Display';
   font-weight: 700;
@@ -19,8 +23,25 @@ h1 {
   font-size: 36pt;
 }
 
+h2 {
+  font-size: 36px;
+}
+
 h3 {
   font-size: 28pt;
+}
+
+.checkbox {
+  margin-right: 15px;
+  input {
+    margin-right: 5px;
+  }
+}
+
+abbr {
+  border-bottom: none !important;
+  font-weight: 700;
+  text-decoration: none !important;
 }
 
 div {
@@ -30,5 +51,11 @@ div {
 ul.home__content {
   li {
     margin-top: 10px;
+  }
+}
+
+#error_explanation {
+  h2 {
+    font-size: 24px;
   }
 }
