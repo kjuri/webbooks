@@ -8,6 +8,11 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin
 
+    rescue_from CanCan::AccessDenied do |exception|
+      flash[:alert] = "You have no rights to access this page."
+      redirect_back(fallback_location: root_path)
+    end
+
     def authenticate_admin
       raise CanCan::AccessDenied unless current_user && current_user.admin?
     end
