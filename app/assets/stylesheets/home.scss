@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'common/googlefonts';
+
 .card-image {
   max-width: 100%
+}
+
+h1.home__header, h3.home__header {
+  margin-top: 25px;
+  font-family: 'Playfair Display';
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 36pt;
+}
+
+h3 {
+  font-size: 28pt;
+}
+
+div {
+  font-size: 14pt;
+}
+
+ul.home__content {
+  li {
+    margin-top: 10px;
+  }
 }
