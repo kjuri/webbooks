@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.relative_url_root = '/11_szmigiel/webbooks'
+  config.action_controller.relative_url_root = '/11_szmigiel/webbooks'
+  config.tinymce.base = '/11_szmigiel/webbooks/assets/tinymce'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
