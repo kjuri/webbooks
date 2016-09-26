@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require tinymce-jquery
 //= require tether
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+

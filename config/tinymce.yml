@@ -15,7 +15,7 @@ plugins:
   - emoticons
   - textcolor
 content_css:
-  - /assets/common/googlefonts.css
+  - http://leszczyna.wzks.uj.edu.pl/11_szmigiel/webbooks/assets/common/googlefonts.css
 font_formats:
   - Arial=arial,helvetica,sans-serif
   - Arial Black=arial black,avant garde
@@ -30,3 +30,5 @@ font_formats:
   - Times New Roman=times new roman,times
   - Trebuchet MS=trebuchet ms,geneva
   - Webdings=webdings
+document_base_url:
+  - http://leszczyna.wzks.uj.edu.pl/11_szmigiel/webbooks/
